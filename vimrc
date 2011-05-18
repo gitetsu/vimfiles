@@ -98,9 +98,9 @@ let mapleader = ","
 
 " normal mode
 nnoremap <leader>t :<C-u>tabnew<CR>
-nnoremap <leader>p :<C-u>set paste!<CR>
+nnoremap <leader>p :<C-u>setlocal paste!<CR>
 nnoremap <leader>P "*P
-nnoremap <leader>C :<C-u>set number!<CR>:<C-u>set list!<CR>
+nnoremap <leader>C :<C-u>setlocal number!<CR>:<C-u>setlocal list!<CR>
 nnoremap <expr> s* ':%s/\<' . expand('<cword>') . '\>/'
 nnoremap Y y$
 nnoremap j gj
