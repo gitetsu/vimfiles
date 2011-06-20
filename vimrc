@@ -52,8 +52,8 @@ match ZenkakuSpace /　/
 autocmd VimEnter, WinEnter * match ZenkakuSpace /　/
 
 " indent settings
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set tabstop=4
 set expandtab
 set autoindent
@@ -175,18 +175,6 @@ autocmd Filetype *
         \   endif
 endif
 
-"PHP settings
-let php_sql_query=1
-let php_htmlInStrings=1
-"let php_noShortTags=1
-let php_folding=1
-let php_large_file=5000
-
-" plugin settings
-" pathogen
-" call pathogen#runtime_append_all_bundles()
-" call pathogen#helptags()
-
 " ack
 nnoremap <Space>a :<C-u>Ack 
 
@@ -200,16 +188,8 @@ nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
 " toggle_mouse
 nnoremap <Space>m :<C-u>ToggleMouse<CR>
 
-" smartchr
-inoremap <expr> = smartchr#one_of('=', ' = ', ' == ', ' => ', ' += ')
-inoremap <expr> { smartchr#one_of('{', '#{')
-
 " sparkup
 "let g:sparkupExecuteMapping = '<c-m>'
-
-" Ref
-let g:ref_phpmanual_path = $HOME . '/man/php-chunked-xhtml/'
-let g:ref_phpmanual_cmd = 'w3m -dump %s'
 
 if has('multi_byte_ime') || has('xim')
   set iminsert=0 imsearch=0
