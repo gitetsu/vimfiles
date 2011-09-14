@@ -14,6 +14,7 @@ Bundle 'The-NERD-tree'
 Bundle 'YankRing.vim'
 Bundle 'ack.vim'
 Bundle 'bufexplorer.zip'
+Bundle 'ctrlp.vim'
 Bundle 'endwise.vim'
 Bundle 'fugitive.vim'
 Bundle 'git://github.com/gregsexton/gitv.git'
@@ -177,6 +178,21 @@ endif
 
 " ack
 nnoremap <Space>a :<C-u>Ack 
+
+" ctrlp
+let g:ctrlp_map = '<Space>p'
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_prompt_mappings = {
+	\ 'PrtBS()': ['<C-h>'],
+	\ 'PrtDelete()': ['<C-d>'],
+	\ 'AcceptSelection("h")': ['<C-o>'],
+	\ 'ToggleByFname()': ['<c-d>'],
+	\ 'ToggleType(1)': ['<C-l>'],
+	\ 'ToggleType(-1)': ['<C-h>'],
+	\ 'PrtCurLeft()': ['<C-b>'],
+	\ 'PrtCurRight()': ['<C-f>'],
+	\ 'BufOpen("ControlP", "del")': ['<esc>', '<c-c>', '<c-g>'],
+\ }
 
 " gtags
 nnoremap <Space>gd :Gtags <C-r><C-w><CR>
