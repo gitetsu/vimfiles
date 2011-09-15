@@ -10,14 +10,17 @@ call vundle#rc()
 Bundle 'BlockDiff'
 Bundle 'Command-T'
 Bundle 'EasyMotion'
+Bundle 'NERD_Tree-and-ack'
 Bundle 'The-NERD-tree'
 Bundle 'YankRing.vim'
 Bundle 'ack.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'ctrlp.vim'
+Bundle 'git://github.com/vim-scripts/dbext.vim.git'
 Bundle 'endwise.vim'
 Bundle 'fugitive.vim'
 Bundle 'git://github.com/gregsexton/gitv.git'
+Bundle 'git://github.com/toritori0318/vim-nerdtree-plugin.git'
 Bundle 'gtags.vim'
 Bundle 'matchit.zip'
 Bundle 'rails.vim'
@@ -56,7 +59,7 @@ autocmd VimEnter, WinEnter * match ZenkakuSpace /　/
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set expandtab
+set noexpandtab
 set autoindent
 set smartindent
 set cindent
@@ -140,6 +143,12 @@ cnoremap <C-k> <Up>
 cnoremap <C-l> <C-u>
 cnoremap w!! w !sudo tee % >/dev/null
 
+let php_sql_query=1
+let php_htmlInStrings=1
+"let php_noShortTags=1
+let php_folding=1
+let php_large_file=5000
+
 " omni completion
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set filetype=xhtml
@@ -194,6 +203,17 @@ let g:ctrlp_prompt_mappings = {
 	\ 'BufOpen("ControlP", "del")': ['<esc>', '<c-c>', '<c-g>'],
 \ }
 
+" CommandT
+let g:CommandTMaxHeight=10
+let g:CommandTBackspaceMap='<C-h>'
+let g:CommandTDeleteMap='<C-d>'
+let g:CommandTAcceptSelectionSplitMap='<C-o>'
+let g:CommandTCursorLeftMap='<C-b>'
+let g:CommandTCursorRightMap='<C-f>'
+nnoremap <Space>t <ESC>:CommandT<CR>
+nnoremap <Space>b <ESC>:CommandTBuffer<CR>
+
+
 " gtags
 nnoremap <Space>gd :Gtags <C-r><C-w><CR>
 nnoremap <Space>gr :Gtags -r <C-r><C-w><CR>
@@ -203,6 +223,9 @@ nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
 
 " toggle_mouse
 nnoremap <Space>m :<C-u>ToggleMouse<CR>
+
+" Ref
+let g:ref_alc_start_linenumber = 39
 
 " sparkup
 "let g:sparkupExecuteMapping = '<c-m>'
