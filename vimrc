@@ -7,6 +7,7 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
 Bundle 'BlockDiff'
 Bundle 'Command-T'
 Bundle 'EasyMotion'
@@ -17,6 +18,7 @@ Bundle 'ack.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'ctrlp.vim'
 Bundle 'git://github.com/vim-scripts/dbext.vim.git'
+Bundle 'git://github.com/bkad/CamelCaseMotion.git'
 Bundle 'endwise.vim'
 Bundle 'fugitive.vim'
 Bundle 'git://github.com/gregsexton/gitv.git'
@@ -29,6 +31,9 @@ Bundle 'scratch.vim'
 Bundle 'smartchr'
 Bundle 'snipMate'
 Bundle 'surround.vim'
+Bundle 'git://github.com/tpope/vim-repeat.git'
+Bundle 'git://github.com/Shougo/vimproc.git'
+Bundle 'git://github.com/Shougo/vimshell.git'
 
 set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,cp932,sjis,utf-8
@@ -85,7 +90,7 @@ set wildmode=longest,full
 set formatoptions+=mM
 set whichwrap=b,s,h,l
 set laststatus=2
-set statusline=%<%F\ %m%r%h%w[%n]%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l/%L,%c%V%8P
+set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=line:%l/%L\ col:%c%V%8P
 set showcmd
 set history=1000
 
@@ -166,7 +171,7 @@ function! s:ChangeCurrentDir(directory, bang)
   if a:directory == ''
     lcd %:p:h
   else
-    execute 'lcd' . a:directory
+    execute 'lcd ' . a:directory
   endif
 
   if a:bang == ''
@@ -191,6 +196,7 @@ nnoremap <Space>a :<C-u>Ack
 " ctrlp
 let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = {
 	\ 'PrtBS()': ['<C-h>'],
 	\ 'PrtDelete()': ['<C-d>'],
