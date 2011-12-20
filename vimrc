@@ -7,31 +7,32 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'BlockDiff'
-Bundle 'Command-T'
-Bundle 'EasyMotion'
+Bundle 'git://github.com/gmarik/vundle.git'
+Bundle 'git://github.com/vim-scripts/BlockDiff.git'
+Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
 Bundle 'NERD_Tree-and-ack'
-Bundle 'The-NERD-tree'
-Bundle 'YankRing.vim'
-Bundle 'ack.vim'
-Bundle 'bufexplorer.zip'
-Bundle 'ctrlp.vim'
+Bundle 'git://github.com/vim-scripts/The-NERD-tree.git'
+Bundle 'git://github.com/vim-scripts/YankRing.vim.git'
+Bundle 'git://github.com/mileszs/ack.vim.git'
+Bundle 'git://github.com/kien/ctrlp.vim.git'
 Bundle 'git://github.com/vim-scripts/dbext.vim.git'
 Bundle 'git://github.com/bkad/CamelCaseMotion.git'
 "Bundle 'git://github.com/tyru/operator-camelize.vim.git'
-Bundle 'endwise.vim'
-Bundle 'fugitive.vim'
+Bundle 'git://github.com/tpope/vim-endwise.git'
+Bundle 'git://github.com/tpope/vim-fugitive.git'
+Bundle 'git://github.com/vim-scripts/greplace.vim.git'
 Bundle 'git://github.com/gregsexton/gitv.git'
 Bundle 'git://github.com/toritori0318/vim-nerdtree-plugin.git'
-Bundle 'gtags.vim'
-Bundle 'matchit.zip'
-Bundle 'rails.vim'
-Bundle 'ref.vim'
-Bundle 'scratch.vim'
-Bundle 'smartchr'
-Bundle 'snipMate'
-Bundle 'surround.vim'
+Bundle 'git://github.com/vim-scripts/gtags.vim.git'
+Bundle 'git://github.com/vim-scripts/matchit.zip.git'
+Bundle 'git://github.com/tpope/vim-rails.git'
+Bundle 'git://github.com/thinca/vim-ref.git'
+Bundle 'git://github.com/thinca/vim-quickrun.git'
+Bundle 'git://github.com/vim-scripts/scratch.vim.git'
+Bundle 'git://github.com/kana/vim-smartchr.git'
+Bundle 'git://github.com/msanders/snipmate.vim.git'
+Bundle 'git://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/majutsushi/tagbar.git'
 Bundle 'git://github.com/tpope/vim-repeat.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/vimshell.git'
@@ -145,7 +146,14 @@ set wildmode=longest,full
 set formatoptions+=mM
 set whichwrap=b,s,h,l
 set laststatus=2
-set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=line:%l/%L\ col:%c%V%8P
+function! GetCurrentPasteStatus()
+	if &paste == 0
+		return ''
+	elseif &paste == 1
+		return '[paste]'
+	endif
+endfunction
+set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'.GetCurrentPasteStatus()}%=line:%l/%L\ col:%c%V%8P
 set showcmd
 set history=1000
 
@@ -264,15 +272,8 @@ let g:ctrlp_prompt_mappings = {
 	\ 'BufOpen("ControlP", "del")': ['<esc>', '<c-c>', '<c-g>'],
 \ }
 
-" CommandT
-let g:CommandTMaxHeight=10
-let g:CommandTBackspaceMap='<C-h>'
-let g:CommandTDeleteMap='<C-d>'
-let g:CommandTAcceptSelectionSplitMap='<C-o>'
-let g:CommandTCursorLeftMap='<C-b>'
-let g:CommandTCursorRightMap='<C-f>'
-nnoremap <Space>t <ESC>:CommandT<CR>
-nnoremap <Space>b <ESC>:CommandTBuffer<CR>
+" easymotion
+let g:EasyMotion_leader_key = '<Leader>'
 
 
 " gtags
