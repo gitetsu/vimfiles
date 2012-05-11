@@ -36,6 +36,7 @@ Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/majutsushi/tagbar.git'
 Bundle 'git://github.com/int3/vim-extradite.git'
 Bundle 'git://github.com/tpope/vim-repeat.git'
+Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/vimshell.git'
 
@@ -297,3 +298,9 @@ let g:ref_alc_start_linenumber = 39
 if has('multi_byte_ime') || has('xim')
   set iminsert=0 imsearch=0
 endif
+
+" vim-textmanip
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
