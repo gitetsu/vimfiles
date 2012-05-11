@@ -30,6 +30,7 @@ Bundle 'git://github.com/thinca/vim-ref.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
 Bundle 'git://github.com/vim-scripts/scratch.vim.git'
 Bundle 'git://github.com/kana/vim-smartchr.git'
+Bundle 'git://github.com/kana/vim-smartinput.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/majutsushi/tagbar.git'
@@ -189,8 +190,8 @@ inoremap <C-f> <Right>
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 "auto completion for brackets
-inoremap ( ()<Left>
-inoremap [ []<Left>
+"inoremap ( ()<Left>
+"inoremap [ []<Left>
 
 
 " visual mode keymap
