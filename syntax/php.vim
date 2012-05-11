@@ -1181,7 +1181,7 @@ syn case ignore
   " Magic Constants {{{2
     syn cluster phpClConstants add=phpMagicConstant
     syn case match
-    syn keyword	phpMagicConstant contained __LINE__ __FILE__ __FUNCTION__ __METHOD__ __CLASS__
+    syn keyword	phpMagicConstant contained __LINE__ __FILE__ __DIR__ __FUNCTION__ __METHOD__ __CLASS__ __NAMESPACE__
     syn case ignore
   " }}}2
 
