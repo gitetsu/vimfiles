@@ -4,44 +4,48 @@ set nocompatible
 filetype off
 
 " Vundle
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'git://github.com/gmarik/vundle.git'
-Bundle 'git://github.com/vim-scripts/BlockDiff.git'
-Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
-Bundle 'NERD_Tree-and-ack'
-Bundle 'git://github.com/vim-scripts/The-NERD-tree.git'
-Bundle 'git://github.com/vim-scripts/YankRing.vim.git'
-Bundle 'git://github.com/mileszs/ack.vim.git'
-Bundle 'git://github.com/kien/ctrlp.vim.git'
-Bundle 'git://github.com/vim-scripts/dbext.vim.git'
-Bundle 'git://github.com/bkad/CamelCaseMotion.git'
-"Bundle 'git://github.com/tyru/operator-camelize.vim.git'
-Bundle 'git://github.com/tpope/vim-endwise.git'
-Bundle 'git://github.com/tpope/vim-fugitive.git'
-Bundle 'git://github.com/vim-scripts/greplace.vim.git'
-Bundle 'git://github.com/gregsexton/gitv.git'
-Bundle 'git://github.com/vim-scripts/gtags.vim.git'
-Bundle 'git://github.com/vim-scripts/matchit.zip.git'
-Bundle 'git://github.com/tpope/vim-rails.git'
-Bundle 'git://github.com/thinca/vim-ref.git'
-Bundle 'git://github.com/thinca/vim-quickrun.git'
-Bundle 'git://github.com/vim-scripts/scratch.vim.git'
-Bundle 'scrooloose/syntastic'
-Bundle 'git://github.com/kana/vim-smartchr.git'
-Bundle 'git://github.com/kana/vim-smartinput.git'
-Bundle 'git://github.com/honza/snipmate-snippets'
-Bundle 'git://github.com/garbas/vim-snipmate.git'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/majutsushi/tagbar.git'
-Bundle 'git://github.com/tomtom/tlib_vim'
-Bundle 'git://github.com/int3/vim-extradite.git'
-Bundle 'git://github.com/tpope/vim-repeat.git'
-Bundle 'git://github.com/MarcWeber/vim-addon-mw-utils'
-Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/Shougo/vimshell.git'
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'git://github.com/vim-scripts/BlockDiff.git'
+Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
+Plugin 'NERD_Tree-and-ack'
+Plugin 'git://github.com/vim-scripts/The-NERD-tree.git'
+Plugin 'git://github.com/vim-scripts/YankRing.vim.git'
+Plugin 'git://github.com/mileszs/ack.vim.git'
+Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'git://github.com/vim-scripts/dbext.vim.git'
+Plugin 'git://github.com/bkad/CamelCaseMotion.git'
+"Plugin 'git://github.com/tyru/operator-camelize.vim.git'
+Plugin 'git://github.com/tpope/vim-endwise.git'
+Plugin 'git://github.com/tpope/vim-fugitive.git'
+Plugin 'git://github.com/vim-scripts/greplace.vim.git'
+Plugin 'git://github.com/gregsexton/gitv.git'
+Plugin 'git://github.com/vim-scripts/gtags.vim.git'
+Plugin 'git://github.com/vim-scripts/matchit.zip.git'
+Plugin 'git://github.com/tpope/vim-rails.git'
+Plugin 'git://github.com/thinca/vim-ref.git'
+Plugin 'git://github.com/thinca/vim-quickrun.git'
+Plugin 'git://github.com/vim-scripts/scratch.vim.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'git://github.com/kana/vim-smartchr.git'
+Plugin 'git://github.com/kana/vim-smartinput.git'
+Plugin 'git://github.com/honza/snipmate-snippets'
+Plugin 'git://github.com/garbas/vim-snipmate.git'
+Plugin 'git://github.com/tpope/vim-surround.git'
+Plugin 'git://github.com/majutsushi/tagbar.git'
+Plugin 'git://github.com/tomtom/tlib_vim'
+Plugin 'git://github.com/int3/vim-extradite.git'
+Plugin 'git://github.com/tpope/vim-repeat.git'
+Plugin 'git://github.com/MarcWeber/vim-addon-mw-utils'
+Plugin 'git://github.com/t9md/vim-textmanip.git'
+Plugin 'git://github.com/Shougo/vimproc.git'
+Plugin 'git://github.com/Shougo/vimshell.git'
+
+call vundle#end()
+filetype plugin indent on
 
 if &encoding !=# 'utf-8'
 	set encoding=japan
@@ -162,8 +166,6 @@ endfunction
 set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'.GetCurrentPasteStatus()}%=line:%l/%L\ col:%c%V%8P
 set showcmd
 set history=1000
-
-filetype plugin indent on
 
 " I pray I will never use these
 if has('gui_win32')
