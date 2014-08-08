@@ -15,7 +15,7 @@ Plugin 'NERD_Tree-and-ack'
 Plugin 'git://github.com/vim-scripts/The-NERD-tree.git'
 Plugin 'git://github.com/vim-scripts/YankRing.vim.git'
 Plugin 'git://github.com/mileszs/ack.vim.git'
-Plugin 'git://github.com/kien/ctrlp.vim.git'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'git://github.com/vim-scripts/dbext.vim.git'
 Plugin 'git://github.com/bkad/CamelCaseMotion.git'
 "Plugin 'git://github.com/tyru/operator-camelize.vim.git'
@@ -269,15 +269,14 @@ let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = {
-	\ 'PrtBS()': ['<C-h>'],
-	\ 'PrtDelete()': ['<C-d>'],
-	\ 'AcceptSelection("h")': ['<C-o>'],
-	\ 'ToggleByFname()': ['<c-d>'],
-	\ 'ToggleType(1)': ['<C-l>'],
-	\ 'ToggleType(-1)': ['<C-h>'],
-	\ 'PrtCurLeft()': ['<C-b>'],
-	\ 'PrtCurRight()': ['<C-f>'],
-	\ 'BufOpen("ControlP", "del")': ['<esc>', '<c-c>', '<c-g>'],
+	\ 'PrtBS()': ['<c-h>'],
+	\ 'PrtDelete()': ['<c-d>'],
+	\ 'AcceptSelection("h")': ['<c-o>'],
+	\ 'ToggleByFname()': ['<c-g>'],
+	\ 'ToggleType(1)': ['<c-l>'],
+	\ 'ToggleType(-1)': ['<c-h>'],
+	\ 'PrtCurLeft()': ['<c-b>'],
+	\ 'PrtCurRight()': ['<c-f>'],
 \ }
 
 " easymotion
