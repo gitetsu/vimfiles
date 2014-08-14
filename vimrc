@@ -43,6 +43,7 @@ Plugin 'git://github.com/MarcWeber/vim-addon-mw-utils'
 Plugin 'git://github.com/t9md/vim-textmanip.git'
 Plugin 'git://github.com/Shougo/vimproc.git'
 Plugin 'git://github.com/Shougo/vimshell.git'
+Plugin 'itchyny/lightline.vim.git'
 
 call vundle#end()
 filetype plugin indent on
@@ -302,6 +303,17 @@ let g:ref_alc_start_linenumber = 39
 if has('multi_byte_ime') || has('xim')
   set iminsert=0 imsearch=0
 endif
+
+" lightline
+let g:lightline = {
+	\ 'component_function': {
+	\   'filename': 'MyFilename'
+	\ }
+	\ }
+
+function! MyFilename()
+  return ('' != expand('%:f') ? expand('%:f') : '[No Name]')
+endfunction
 
 " vim-textmanip
 xmap <C-j> <Plug>(textmanip-move-down)
