@@ -33,8 +33,6 @@ Plugin 'git://github.com/vim-scripts/scratch.vim.git'
 Plugin 'scrooloose/syntastic'
 Plugin 'git://github.com/kana/vim-smartchr.git'
 Plugin 'git://github.com/kana/vim-smartinput.git'
-Plugin 'git://github.com/honza/snipmate-snippets'
-Plugin 'git://github.com/garbas/vim-snipmate.git'
 Plugin 'git://github.com/tpope/vim-surround.git'
 Plugin 'git://github.com/majutsushi/tagbar.git'
 Plugin 'git://github.com/tomtom/tlib_vim'
@@ -45,6 +43,10 @@ Plugin 'git://github.com/t9md/vim-textmanip.git'
 Plugin 'git://github.com/Shougo/vimproc.git'
 Plugin 'git://github.com/Shougo/vimshell.git'
 Plugin 'itchyny/lightline.vim.git'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'Shougo/neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 call vundle#end()
 filetype plugin indent on
@@ -130,10 +132,10 @@ match ZenkakuSpace /　/
 autocmd VimEnter, WinEnter * match ZenkakuSpace /　/
 
 " indent settings
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-set noexpandtab
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set smartindent
 set cindent
@@ -297,6 +299,7 @@ nnoremap <Space>m :<C-u>ToggleMouse<CR>
 
 " Ref
 let g:ref_alc_start_linenumber = 39
+let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
 
 " sparkup
 "let g:sparkupExecuteMapping = '<c-m>'
@@ -321,3 +324,12 @@ xmap <C-j> <Plug>(textmanip-move-down)
 xmap <C-k> <Plug>(textmanip-move-up)
 xmap <C-h> <Plug>(textmanip-move-left)
 xmap <C-l> <Plug>(textmanip-move-right)
+
+" neocomplecache
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_ignore_case = 0
+
+" neosnippet
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
