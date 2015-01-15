@@ -11,10 +11,8 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'git://github.com/vim-scripts/BlockDiff.git'
 Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
-Plugin 'NERD_Tree-and-ack'
 Plugin 'git://github.com/vim-scripts/The-NERD-tree.git'
 Plugin 'git://github.com/vim-scripts/YankRing.vim.git'
-Plugin 'git://github.com/mileszs/ack.vim.git'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kien/tabman.vim'
 Plugin 'git://github.com/vim-scripts/dbext.vim.git'
@@ -47,6 +45,7 @@ Plugin 'rhysd/clever-f.vim'
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'szw/vim-ctrlspace'
 
 call vundle#end()
 filetype plugin indent on
@@ -265,9 +264,6 @@ autocmd Filetype *
         \   endif
 endif
 
-" ack
-nnoremap <Space>a :<C-u>Ack 
-
 " ctrlp
 let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
@@ -333,3 +329,10 @@ let g:neocomplcache_enable_ignore_case = 0
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" ctrlspace
+let g:ctrlspace_default_mapping_key = '<Space>j'
+if executable('ag')
+	let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
+endif
+hi link CtrlSpaceSearch Search
