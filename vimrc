@@ -159,12 +159,6 @@ set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'.Get
 set showcmd
 set history=1000
 
-" I pray I will never use these
-if has('gui_win32')
-  set shell=c:/cygwin/bin/bash\ --login
-  set shellcmdflag=--login\ -c
-endif
-
 " key mappings
 let mapleader = ","
 
