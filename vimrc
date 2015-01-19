@@ -12,7 +12,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'git://github.com/vim-scripts/BlockDiff.git'
 Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
 Plugin 'git://github.com/vim-scripts/The-NERD-tree.git'
-Plugin 'git://github.com/vim-scripts/YankRing.vim.git'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'kien/tabman.vim'
 Plugin 'git://github.com/vim-scripts/dbext.vim.git'
@@ -46,6 +45,7 @@ Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'szw/vim-ctrlspace'
+Plugin 'LeafCage/yankround.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -336,3 +336,14 @@ if executable('ag')
 	let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
 hi link CtrlSpaceSearch Search
+
+" yankround.vim
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+nmap <Space>h :CtrlPYankRound<CR>
