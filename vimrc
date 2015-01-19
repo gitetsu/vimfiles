@@ -148,14 +148,6 @@ set wildmode=longest,full
 set formatoptions+=mM
 set whichwrap=b,s,h,l
 set laststatus=2
-function! GetCurrentPasteStatus()
-	if &paste == 0
-		return ''
-	elseif &paste == 1
-		return '[paste]'
-	endif
-endfunction
-set statusline=%<%F\ %m%r%h%w[%n]%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'.GetCurrentPasteStatus()}%=line:%l/%L\ col:%c%V%8P
 set showcmd
 set history=1000
 
@@ -182,10 +174,6 @@ inoremap <C-f> <Right>
 " undo
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
-"auto completion for brackets
-"inoremap ( ()<Left>
-"inoremap [ []<Left>
-
 
 " visual mode keymap
 vmap / y/<C-R>"<CR>
@@ -217,25 +205,6 @@ autocmd FileType html set filetype=xhtml
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
-" commands
-" rename current buffer
-command! -nargs=1 -complete=file Rename f <args>|call delete(expand('#'))
-
-" change current directory
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
-function! s:ChangeCurrentDir(directory, bang)
-  if a:directory == ''
-    lcd %:p:h
-  else
-    execute 'lcd ' . a:directory
-  endif
-
-  if a:bang == ''
-    pwd
-  endif
-endfunction
-nnoremap <silent><Space>cd :<C-u>CD<CR>
 
 imap <silent><leader>date <ESC>:execute 'normal a'.strftime('%Y/%m/%d')<CR>a
 
