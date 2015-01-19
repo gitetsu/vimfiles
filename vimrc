@@ -9,42 +9,31 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'git://github.com/vim-scripts/BlockDiff.git'
-Plugin 'git://github.com/Lokaltog/vim-easymotion.git'
-Plugin 'git://github.com/vim-scripts/The-NERD-tree.git'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'kien/tabman.vim'
-Plugin 'git://github.com/vim-scripts/dbext.vim.git'
-Plugin 'git://github.com/bkad/CamelCaseMotion.git'
-"Plugin 'git://github.com/tyru/operator-camelize.vim.git'
-Plugin 'git://github.com/tpope/vim-endwise.git'
-Plugin 'git://github.com/tpope/vim-fugitive.git'
-Plugin 'git://github.com/vim-scripts/greplace.vim.git'
-Plugin 'git://github.com/gregsexton/gitv.git'
-Plugin 'git://github.com/vim-scripts/gtags.vim.git'
-Plugin 'git://github.com/vim-scripts/matchit.zip.git'
-Plugin 'git://github.com/tpope/vim-rails.git'
-Plugin 'git://github.com/thinca/vim-ref.git'
-Plugin 'git://github.com/thinca/vim-quickrun.git'
-Plugin 'git://github.com/vim-scripts/scratch.vim.git'
-Plugin 'scrooloose/syntastic'
-Plugin 'git://github.com/kana/vim-smartchr.git'
-Plugin 'git://github.com/kana/vim-smartinput.git'
-Plugin 'git://github.com/tpope/vim-surround.git'
-Plugin 'git://github.com/majutsushi/tagbar.git'
-Plugin 'git://github.com/tomtom/tlib_vim'
-Plugin 'git://github.com/int3/vim-extradite.git'
-Plugin 'git://github.com/tpope/vim-repeat.git'
-Plugin 'git://github.com/MarcWeber/vim-addon-mw-utils'
-Plugin 'git://github.com/t9md/vim-textmanip.git'
-Plugin 'git://github.com/Shougo/vimproc.git'
-Plugin 'git://github.com/Shougo/vimshell.git'
-Plugin 'itchyny/lightline.vim.git'
+Plugin 'vim-scripts/BlockDiff'
 Plugin 'rhysd/clever-f.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'gregsexton/gitv'
+Plugin 'itchyny/lightline.vim'
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
 Plugin 'szw/vim-ctrlspace'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-endwise'
+Plugin 'int3/vim-extradite'
+Plugin 'tpope/vim-fugitive'
+Plugin 'thinca/vim-quickrun'
+Plugin 'tpope/vim-rails'
+Plugin 'thinca/vim-ref'
+Plugin 'tpope/vim-repeat'
+Plugin 'kana/vim-smartchr'
+Plugin 'kana/vim-smartinput'
+Plugin 'tpope/vim-surround'
+Plugin 't9md/vim-textmanip'
 Plugin 'LeafCage/yankround.vim'
 
 call vundle#end()
@@ -264,7 +253,12 @@ autocmd Filetype *
         \   endif
 endif
 
-" ctrlp
+if has('multi_byte_ime') || has('xim')
+  set iminsert=0 imsearch=0
+endif
+
+" plugins
+" ctrlp.vim
 let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
@@ -279,31 +273,6 @@ let g:ctrlp_prompt_mappings = {
 	\ 'PrtCurRight()': ['<c-f>'],
 \ }
 
-" easymotion
-let g:EasyMotion_leader_key = '<Leader>'
-
-
-" gtags
-nnoremap <Space>gd :Gtags <C-r><C-w><CR>
-nnoremap <Space>gr :Gtags -r <C-r><C-w><CR>
-
-" NERDTree
-nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
-
-" toggle_mouse
-nnoremap <Space>m :<C-u>ToggleMouse<CR>
-
-" Ref
-let g:ref_alc_start_linenumber = 39
-let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
-
-" sparkup
-"let g:sparkupExecuteMapping = '<c-m>'
-
-if has('multi_byte_ime') || has('xim')
-  set iminsert=0 imsearch=0
-endif
-
 " lightline
 let g:lightline = {
 	\ 'component_function': {
@@ -315,11 +284,8 @@ function! MyFilename()
   return ('' != expand('%:f') ? expand('%:f') : '[No Name]')
 endfunction
 
-" vim-textmanip
-xmap <C-j> <Plug>(textmanip-move-down)
-xmap <C-k> <Plug>(textmanip-move-up)
-xmap <C-h> <Plug>(textmanip-move-left)
-xmap <C-l> <Plug>(textmanip-move-right)
+" nerdtree
+nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
 
 " neocomplecache
 let g:neocomplcache_enable_at_startup = 1
@@ -330,12 +296,24 @@ imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
 
-" ctrlspace
+" vim-ctrlspace
 let g:ctrlspace_default_mapping_key = '<Space>j'
 if executable('ag')
 	let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
 hi link CtrlSpaceSearch Search
+
+" vim-easymotion
+let g:EasyMotion_leader_key = '<Leader>'
+
+" vim-ref
+let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
+
+" vim-textmanip
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
 
 " yankround.vim
 nmap p <Plug>(yankround-p)
