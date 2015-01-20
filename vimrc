@@ -114,6 +114,16 @@ set showtabline=2
 set title
 
 if &t_Co >= 256 || has("gui_running")
+	" colorschme
+	function! FixMolokai()
+	  highlight Visual ctermfg=154 ctermbg=232
+	  highlight IncSearch ctermfg=199 ctermbg=233
+	endfunction
+
+	augroup mycolor
+	  autocmd!
+	  autocmd ColorScheme * call FixMolokai()
+	augroup END
   colorscheme molokai
 endif
 
@@ -281,7 +291,7 @@ let g:ctrlspace_default_mapping_key = '<Space>j'
 if executable('ag')
 	let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
-hi link CtrlSpaceSearch Search
+highlight link CtrlSpaceSearch Search
 
 " vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'
