@@ -9,6 +9,8 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'tpope/vim-abolish'
+Plugin 'rking/ag.vim'
 Plugin 'vim-scripts/BlockDiff'
 Plugin 'rhysd/clever-f.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
