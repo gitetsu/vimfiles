@@ -301,6 +301,12 @@ nnoremap <Space>u :call PhpInsertUse()<CR>
 
 " vim-ref
 let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
+let g:ref_source_webdict_sites = {
+	\ 'weblio': {
+	\   'url': 'http://ejje.weblio.jp/content/%s',
+	\ }
+\ }
+let g:ref_source_webdict_sites.default = 'weblio'
 
 " vim-textmanip
 xmap <C-j> <Plug>(textmanip-move-down)
