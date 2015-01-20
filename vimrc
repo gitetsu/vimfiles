@@ -24,6 +24,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'vim-php/tagbar-phpctags.vim'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
@@ -269,6 +270,9 @@ let g:switch_custom_definitions =
 	\ 	['and', 'or'],
 	\ 	['===', '!==']
 	\ ]
+
+" tagbar
+nnoremap <silent><Space>t :TagbarToggle<CR>
 
 " vim-ctrlspace
 let g:ctrlspace_default_mapping_key = '<Space>j'
