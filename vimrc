@@ -22,6 +22,7 @@ Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'AndrewRadev/switch.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'Lokaltog/vim-easymotion'
@@ -260,6 +261,14 @@ let g:neocomplcache_enable_ignore_case = 0
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" switch.vim
+let g:switch_mapping = '<Space>s'
+let g:switch_custom_definitions =
+	\ [
+	\ 	['and', 'or'],
+	\ 	['===', '!==']
+	\ ]
 
 " vim-ctrlspace
 let g:ctrlspace_default_mapping_key = '<Space>j'
