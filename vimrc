@@ -30,6 +30,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-fugitive'
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'thinca/vim-quickrun'
 Plugin 'tpope/vim-rails'
 Plugin 'thinca/vim-ref'
@@ -283,6 +284,9 @@ hi link CtrlSpaceSearch Search
 
 " vim-easymotion
 let g:EasyMotion_leader_key = '<Leader>'
+
+" vim-php-namespace
+nnoremap <Space>u :call PhpInsertUse()<CR>
 
 " vim-ref
 let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
