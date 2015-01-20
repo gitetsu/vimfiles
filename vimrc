@@ -39,6 +39,7 @@ Plugin 'kana/vim-smartchr'
 Plugin 'kana/vim-smartinput'
 Plugin 'tpope/vim-surround'
 Plugin 't9md/vim-textmanip'
+Plugin 'gcmt/wildfire.vim'
 Plugin 'LeafCage/yankround.vim'
 
 call vundle#end()
@@ -296,6 +297,9 @@ xmap <C-j> <Plug>(textmanip-move-down)
 xmap <C-k> <Plug>(textmanip-move-up)
 xmap <C-h> <Plug>(textmanip-move-left)
 xmap <C-l> <Plug>(textmanip-move-right)
+
+" wildfire
+nmap <Space>w <Plug>(wildfire-quick-select)
 
 " yankround.vim
 nmap p <Plug>(yankround-p)
