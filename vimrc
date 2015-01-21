@@ -116,8 +116,11 @@ set title
 if &t_Co >= 256 || has("gui_running")
 	" colorschme
 	function! FixMolokai()
-	  highlight Visual ctermfg=154 ctermbg=232
+	  highlight Visual ctermbg=55
 	  highlight IncSearch ctermfg=199 ctermbg=233
+	  highlight DiffAdd term=bold ctermbg=34
+	  highlight DiffDelete term=bold ctermbg=208
+
 	endfunction
 
 	augroup mycolor
