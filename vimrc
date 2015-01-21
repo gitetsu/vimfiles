@@ -31,6 +31,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-fugitive'
 Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'thinca/vim-quickrun'
 Plugin 'tpope/vim-rails'
 Plugin 'thinca/vim-ref'
@@ -300,6 +301,7 @@ highlight link CtrlSpaceSearch Search
 let g:EasyMotion_leader_key = '<Leader>'
 
 " vim-php-namespace
+nnoremap <Space>e :call PhpExpandClass()<CR>
 nnoremap <Space>u :call PhpInsertUse()<CR>
 
 " vim-ref
