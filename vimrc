@@ -194,12 +194,15 @@ inoremap <C-f> <Right>
 inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
-" visual mode keymap
+" Visual and select
 vmap / y/<C-R>"<CR>
-vmap <C-a> <ESC>gg<S-v><S-g>
-vmap <C-c> "+y
+vnoremap <C-a> <ESC>gg<S-v><S-g>
 vnoremap / <Esc>/\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
 vnoremap ? <Esc>?\%><C-R>=line("'<")-1<CR>l\%<<C-R>=line("'>")+1<CR>l
+
+" Visual only
+xnoremap s :sort<CR>
+xnoremap t :s/\s\+$//<CR>
 
 " command mode
 cnoremap <C-a> <Home>
