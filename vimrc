@@ -303,11 +303,10 @@ let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_use_migemo = 1
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:EasyMotion_use_upper = 1
-nmap <Space>m <Plug>(easymotion-s)
+let g:EasyMotion_enter_jump_first = 1
+nmap <Space>m <Plug>(easymotion-s2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-omap N <Plug>(easymotion-prev)
 
 " vim-php-namespace
 nnoremap <Space>e :call PhpExpandClass()<CR>
