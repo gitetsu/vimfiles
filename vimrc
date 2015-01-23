@@ -158,8 +158,10 @@ set gdefault
 set backspace=indent,eol,start
 set wrapscan
 set showmatch
+set matchtime=1
 set nobackup
 set hidden
+set pumheight=10
 
 " cmd settings
 set wildmenu
