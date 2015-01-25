@@ -46,59 +46,59 @@ call vundle#end()
 filetype plugin indent on
 
 if &encoding !=# 'utf-8'
-	set encoding=japan
-	set fileencoding=japan
+  set encoding=japan
+  set fileencoding=japan
 endif
 if has('iconv')
-	let s:enc_euc = 'euc-jp'
-	let s:enc_jis = 'iso-2022-jp'
-	" iconvがeucJP-msに対応しているかをチェック
-	if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-		let s:enc_euc = 'eucjp-ms'
-		let s:enc_jis = 'iso-2022-jp-3'
-		" iconvがJISX0213に対応しているかをチェック
-	elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-		let s:enc_euc = 'euc-jisx0213'
-		let s:enc_jis = 'iso-2022-jp-3'
-	endif
-	" fileencodingsを構築
-	if &encoding ==# 'utf-8'
-		let s:fileencodings_default = &fileencodings
-		let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-		let &fileencodings = &fileencodings .','. s:fileencodings_default
-		unlet s:fileencodings_default
-	else
-		let &fileencodings = &fileencodings .','. s:enc_jis
-		set fileencodings+=utf-8,ucs-2le,ucs-2
-		if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-			set fileencodings+=cp932
-			set fileencodings-=euc-jp
-			set fileencodings-=euc-jisx0213
-			set fileencodings-=eucjp-ms
-			let &encoding = s:enc_euc
-			let &fileencoding = s:enc_euc
-		else
-			let &fileencodings = &fileencodings .','. s:enc_euc
-		endif
-	endif
-	" 定数を処分
-	unlet s:enc_euc
-	unlet s:enc_jis
+  let s:enc_euc = 'euc-jp'
+  let s:enc_jis = 'iso-2022-jp'
+  " iconvがeucJP-msに対応しているかをチェック
+  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'eucjp-ms'
+    let s:enc_jis = 'iso-2022-jp-3'
+    " iconvがJISX0213に対応しているかをチェック
+  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+    let s:enc_euc = 'euc-jisx0213'
+    let s:enc_jis = 'iso-2022-jp-3'
+  endif
+  " fileencodingsを構築
+  if &encoding ==# 'utf-8'
+    let s:fileencodings_default = &fileencodings
+    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+    let &fileencodings = &fileencodings .','. s:fileencodings_default
+    unlet s:fileencodings_default
+  else
+    let &fileencodings = &fileencodings .','. s:enc_jis
+    set fileencodings+=utf-8,ucs-2le,ucs-2
+    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+      set fileencodings+=cp932
+      set fileencodings-=euc-jp
+      set fileencodings-=euc-jisx0213
+      set fileencodings-=eucjp-ms
+      let &encoding = s:enc_euc
+      let &fileencoding = s:enc_euc
+    else
+      let &fileencodings = &fileencodings .','. s:enc_euc
+    endif
+  endif
+  " 定数を処分
+  unlet s:enc_euc
+  unlet s:enc_jis
 endif
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
-	function! AU_ReCheck_FENC()
-		if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-			let &fileencoding=&encoding
-		endif
-	endfunction
-	autocmd BufReadPost * call AU_ReCheck_FENC()
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 
 set fileformats=unix,dos,mac
 
 if exists('&ambiwidth')
-	set ambiwidth=double
+  set ambiwidth=double
 endif
 
 set encoding=utf-8
@@ -114,19 +114,19 @@ set showtabline=2
 set title
 
 if &t_Co >= 256 || has("gui_running")
-	" colorschme
-	function! FixMolokai()
-	  highlight Visual ctermbg=55
-	  highlight IncSearch ctermfg=199 ctermbg=233
-	  highlight DiffAdd term=bold ctermbg=34
-	  highlight DiffDelete term=bold ctermbg=208
+  " colorschme
+  function! FixMolokai()
+    highlight Visual ctermbg=55
+    highlight IncSearch ctermfg=199 ctermbg=233
+    highlight DiffAdd term=bold ctermbg=34
+    highlight DiffDelete term=bold ctermbg=208
 
-	endfunction
+  endfunction
 
-	augroup mycolor
-	  autocmd!
-	  autocmd ColorScheme * call FixMolokai()
-	augroup END
+  augroup mycolor
+    autocmd!
+    autocmd ColorScheme * call FixMolokai()
+  augroup END
   colorscheme molokai
 endif
 
@@ -250,22 +250,22 @@ let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = {
-	\ 'PrtBS()': ['<c-h>'],
-	\ 'PrtDelete()': ['<c-d>'],
-	\ 'AcceptSelection("h")': ['<c-o>'],
-	\ 'ToggleByFname()': ['<c-g>'],
-	\ 'ToggleType(1)': ['<c-l>'],
-	\ 'ToggleType(-1)': ['<c-h>'],
-	\ 'PrtCurLeft()': ['<c-b>'],
-	\ 'PrtCurRight()': ['<c-f>'],
+  \ 'PrtBS()': ['<c-h>'],
+  \ 'PrtDelete()': ['<c-d>'],
+  \ 'AcceptSelection("h")': ['<c-o>'],
+  \ 'ToggleByFname()': ['<c-g>'],
+  \ 'ToggleType(1)': ['<c-l>'],
+  \ 'ToggleType(-1)': ['<c-h>'],
+  \ 'PrtCurLeft()': ['<c-b>'],
+  \ 'PrtCurRight()': ['<c-f>'],
 \ }
 
 " lightline
 let g:lightline = {
-	\ 'component_function': {
-	\   'filename': 'MyFilename'
-	\ }
-	\ }
+  \ 'component_function': {
+  \   'filename': 'MyFilename'
+  \ }
+  \ }
 
 function! MyFilename()
   return ('' != expand('%:f') ? expand('%:f') : '[No Name]')
@@ -286,10 +286,10 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 " switch.vim
 let g:switch_mapping = '<Space>s'
 let g:switch_custom_definitions =
-	\ [
-	\ 	['and', 'or'],
-	\ 	['===', '!==']
-	\ ]
+  \ [
+  \   ['and', 'or'],
+  \   ['===', '!==']
+  \ ]
 
 " tagbar
 nnoremap <silent><Space>t :TagbarToggle<CR>
@@ -297,7 +297,7 @@ nnoremap <silent><Space>t :TagbarToggle<CR>
 " vim-ctrlspace
 let g:ctrlspace_default_mapping_key = '<Space>j'
 if executable('ag')
-	let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
+  let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
 highlight link CtrlSpaceSearch Search
 
@@ -319,9 +319,9 @@ nnoremap <Space>u :call PhpInsertUse()<CR>
 " vim-ref
 let g:ref_phpmanual_path = '$HOME/man/php-chunked-xhtml/'
 let g:ref_source_webdict_sites = {
-	\ 'weblio': {
-	\   'url': 'http://ejje.weblio.jp/content/%s',
-	\ }
+  \ 'weblio': {
+  \   'url': 'http://ejje.weblio.jp/content/%s',
+  \ }
 \ }
 let g:ref_source_webdict_sites.default = 'weblio'
 
