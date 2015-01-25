@@ -162,6 +162,7 @@ set matchtime=1
 set nobackup
 set hidden
 set pumheight=10
+set nrformats=
 
 " cmd settings
 set wildmenu
