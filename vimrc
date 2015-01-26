@@ -38,6 +38,7 @@ Plugin 'thinca/vim-ref'
 Plugin 'tpope/vim-repeat'
 Plugin 'kana/vim-smartchr'
 Plugin 'kana/vim-smartinput'
+Plugin 'kana/vim-submode'
 Plugin 'tpope/vim-surround'
 Plugin 't9md/vim-textmanip'
 Plugin 'gcmt/wildfire.vim'
@@ -326,6 +327,12 @@ let g:ref_source_webdict_sites = {
   \ }
 \ }
 let g:ref_source_webdict_sites.default = 'weblio'
+
+" vim-submode
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
 
 " vim-textmanip
 xmap <C-j> <Plug>(textmanip-move-down)
