@@ -9,6 +9,7 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
+" plugins
 Plugin 'tpope/vim-abolish'
 Plugin 'rking/ag.vim'
 Plugin 'vim-scripts/BlockDiff'
@@ -43,6 +44,9 @@ Plugin 'tpope/vim-surround'
 Plugin 't9md/vim-textmanip'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'LeafCage/yankround.vim'
+
+" syntaxes
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 filetype plugin indent on
