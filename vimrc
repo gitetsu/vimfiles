@@ -340,10 +340,13 @@ let g:ref_source_webdict_sites = {
 let g:ref_source_webdict_sites.default = 'weblio'
 
 " vim-submode
+let g:submode_keep_leaving_key = 1
 call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
 call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
 call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
+call submode#enter_with('closeWindow', 'n', '', '<C-w>c', '<C-w>c')
+call submode#map('closeWindow', 'n', '', 'c', '<C-w>c')
 
 " vim-textmanip
 xmap <C-j> <Plug>(textmanip-move-down)
