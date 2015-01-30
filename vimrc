@@ -30,6 +30,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'thinca/vim-localrc'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'adoy/vim-php-refactoring-toolbox'
@@ -318,6 +319,12 @@ let g:EasyMotion_enter_jump_first = 1
 nmap <Space>m <Plug>(easymotion-s2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
+
+" vim-gitgutter
+let g:gitgutter_sign_added = '✓'
+let g:gitgutter_sign_modified = '✱'
+let g:gitgutter_sign_removed = '✗'
+let g:gitgutter_sign_modified_removed = '✦'
 
 " vim-php-namespace
 nnoremap <Space>e :call PhpExpandClass()<CR>
