@@ -143,7 +143,6 @@ nnoremap j gj
 nnoremap k gk
 
 " insert mode mappings
-inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 inoremap <C-b> <Left>
