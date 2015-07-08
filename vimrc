@@ -116,6 +116,7 @@ set wrapscan
 set showmatch
 set matchtime=1
 set nobackup
+set backupskip=/tmp/*,/private/tmp/*
 set hidden
 set pumheight=10
 set nrformats=
