@@ -13,6 +13,8 @@ Plugin 'rking/ag.vim'
 Plugin 'vim-scripts/BlockDiff'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gregsexton/gitv'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Shougo/neocomplcache'
@@ -218,6 +220,39 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtCurRight()': ['<c-f>'],
 \ }
 
+" incsearch.vim
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+let g:incsearch#auto_nohlsearch = 1
+map n <Plug>(incsearch-nohl-n)
+map N <Plug>(incsearch-nohl-N)
+map * <Plug>(incsearch-nohl-*)
+map # <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+let g:incsearch#separate_highlight = 1
+
+augroup incsearch-keymap
+  autocmd!
+  autocmd VimEnter * call s:incsearch_keymap()
+augroup END
+function! s:incsearch_keymap()
+  IncSearchNoreMap <C-f> <Over>(incsearch-scroll-f)
+  IncSearchNoreMap <C-b> <Over>(incsearch-scroll-b)
+endfunction
+
+let g:incsearch_cli_key_mappings = {
+  \   "\<C-j>": "\<CR>",
+  \ }
+
+" incsearch-fuzzy.vim
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
 " lightline
 let g:lightline = {
   \ 'component_function': {
@@ -267,8 +302,6 @@ let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
 nmap <Space>m <Plug>(easymotion-s2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
 " vim-gitgutter
 let g:gitgutter_sign_added = '✓'
