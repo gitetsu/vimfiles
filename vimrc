@@ -25,6 +25,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-php/tagbar-phpctags.vim'
+Plugin 'osyo-manga/vim-anzu'
 Plugin 'szw/vim-ctrlspace'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
@@ -226,10 +227,10 @@ map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
 let g:incsearch#auto_nohlsearch = 1
-map n <Plug>(incsearch-nohl-n)
-map N <Plug>(incsearch-nohl-N)
-map * <Plug>(incsearch-nohl-*)
-map # <Plug>(incsearch-nohl-#)
+map n <Plug>(incsearch-nohl)<Plug>(anzu-n)
+map N <Plug>(incsearch-nohl)<Plug>(anzu-N)
+map * <Plug>(incsearch-nohl)<Plug>(anzu-star)
+map # <Plug>(incsearch-nohl)<Plug>(anzu-sharp)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
@@ -255,8 +256,15 @@ map zg/ <Plug>(incsearch-fuzzy-stay)
 
 " lightline
 let g:lightline = {
+  \ 'active': {
+  \   'left': [
+  \     ['mode', 'paste'],
+  \     ['readonly', 'filename', 'modified', 'anzu']
+  \   ],
+  \ },
   \ 'component_function': {
-  \   'filename': 'MyFilename'
+  \   'anzu': 'anzu#search_status',
+  \   'filename': 'MyFilename',
   \ }
   \ }
 
@@ -286,6 +294,12 @@ let g:switch_custom_definitions =
 
 " tagbar
 nnoremap <silent><Space>t :TagbarToggle<CR>
+
+" vim-anzu
+augroup vim-anzu
+  autocmd!
+  autocmd CursorMoved,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
 
 " vim-ctrlspace
 let g:ctrlspace_default_mapping_key = '<Space>j'
