@@ -33,6 +33,7 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'int3/vim-extradite'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'thinca/vim-localrc'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'adoy/vim-php-refactoring-toolbox'
@@ -274,6 +275,7 @@ let g:lightline = {
   \ 'component_function': {
   \   'anzu': 'anzu#search_status',
   \   'filename': 'MyFilename',
+  \   'gutentags': 'gutentags#statusline',
   \ }
   \ }
 
