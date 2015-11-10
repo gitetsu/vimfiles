@@ -323,13 +323,20 @@ endif
 highlight link CtrlSpaceSearch Search
 
 " vim-easymotion
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
-let g:EasyMotion_use_migemo = 1
-let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
-let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_use_upper = 1
 nmap <Space>m <Plug>(easymotion-s2)
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
 
 " vim-gitgutter
 let g:gitgutter_sign_added = '✓'
