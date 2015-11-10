@@ -284,7 +284,7 @@ endfunction
 " nerdtree
 nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
 
-" neocomplecache
+" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 0
 
