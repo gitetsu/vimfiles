@@ -261,6 +261,15 @@ let g:lightline = {
   \     ['mode', 'paste'],
   \     ['readonly', 'filename', 'modified', 'anzu']
   \   ],
+  \   'right': [
+  \     ['lineinfo'],
+  \     ['percent'],
+  \     ['fileformat', 'fileencoding', 'filetype'],
+  \     ['gutentags'],
+  \   ]
+  \ },
+  \ 'component': {
+  \   'lineinfo': '%3l/%3L:%-2v',
   \ },
   \ 'component_function': {
   \   'anzu': 'anzu#search_status',
