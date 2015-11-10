@@ -300,6 +300,7 @@ let g:switch_mapping = '<Space>s'
 let g:switch_custom_definitions =
   \ [
   \   ['and', 'or'],
+  \   ['=', '!='],
   \   ['===', '!==']
   \ ]
 
