@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 " plugins
 Plugin 'tpope/vim-abolish'
 Plugin 'rking/ag.vim'
+Plugin 'DataWraith/auto_mkdir'
 Plugin 'vim-scripts/BlockDiff'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gregsexton/gitv'
