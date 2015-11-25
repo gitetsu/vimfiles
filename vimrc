@@ -22,6 +22,7 @@ Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'scrooloose/nerdtree'
+Plugin 'kannokanno/previm'
 Plugin 'scrooloose/syntastic'
 Plugin 'AndrewRadev/switch.vim'
 Plugin 'majutsushi/tagbar'
@@ -287,9 +288,6 @@ function! MyFilename()
   return ('' != expand('%:f') ? expand('%:f') : '[No Name]')
 endfunction
 
-" nerdtree
-nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
-
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_ignore_case = 0
@@ -298,6 +296,16 @@ let g:neocomplcache_enable_ignore_case = 0
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" nerdtree
+nnoremap <silent><Space>n :<C-u>NERDTreeToggle<CR>
+
+" previm
+let g:previm_open_cmd = 'open -a Firefox'
+augroup previm
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 " switch.vim
 let g:switch_mapping = '<Space>s'
