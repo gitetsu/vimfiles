@@ -39,6 +39,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'thinca/vim-localrc'
+Plugin 'kana/vim-operator-user'
+Plugin 'haya14busa/vim-operator-flashy'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'adoy/vim-php-refactoring-toolbox'
 Plugin 'thinca/vim-quickrun'
@@ -359,6 +361,11 @@ let g:gitgutter_sign_added = '✓'
 let g:gitgutter_sign_modified = '✱'
 let g:gitgutter_sign_removed = '✗'
 let g:gitgutter_sign_modified_removed = '✦'
+
+" vim-operator-flashy
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
+let g:operator#flashy#group = 'Visual'
 
 " vim-php-namespace
 nnoremap <Space>e :call PhpExpandClass()<CR>
