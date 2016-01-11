@@ -12,6 +12,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'rking/ag.vim'
 Plugin 'DataWraith/auto_mkdir'
 Plugin 'vim-scripts/BlockDiff'
+Plugin 'tyru/caw.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'haya14busa/incsearch.vim'
@@ -210,6 +211,11 @@ if has('multi_byte_ime') || has('xim')
 endif
 
 " plugins
+
+" caw.vim
+nmap <Space>c <Plug>(caw:i:toggle)
+vmap <Space>c <Plug>(caw:i:toggle)
+
 " ctrlp.vim
 let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
