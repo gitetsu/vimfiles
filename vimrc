@@ -13,6 +13,7 @@ Plugin 'rking/ag.vim'
 Plugin 'DataWraith/auto_mkdir'
 Plugin 'tyru/caw.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'arecarn/fold-cycle.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-fuzzy.vim'
@@ -232,6 +233,11 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtCurLeft()': ['<c-b>'],
   \ 'PrtCurRight()': ['<c-f>'],
 \ }
+
+" fold-cycle.vim
+let g:fold_cycle_default_mapping = 0
+nmap <Tab> <Plug>(fold-cycle-open)
+nmap <BS> <Plug>(fold-cycle-close)
 
 " incsearch.vim
 map / <Plug>(incsearch-forward)
