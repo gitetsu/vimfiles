@@ -1,3 +1,9 @@
+" encodings
+set encoding=utf-8
+set fileencodings=utf-8,cp932,euc-jp
+set fileformats=unix,dos,mac
+scriptencoding utf-8
+
 set nocompatible
 
 " vim-plug
@@ -60,12 +66,6 @@ Plug 'LeafCage/yankround.vim'
 Plugin 'cespare/vim-toml'
 
 call plug#end()
-
-" encodings
-set encoding=utf-8
-set fileencodings=utf-8,cp932,euc-jp
-set fileformats=unix,dos,mac
-scriptencoding utf-8
 
 if exists('&ambiwidth')
   set ambiwidth=double
