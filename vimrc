@@ -405,10 +405,10 @@ map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 
 " vim-gitgutter
-let g:gitgutter_sign_added = '✓'
-let g:gitgutter_sign_modified = '✱'
-let g:gitgutter_sign_removed = '✗'
-let g:gitgutter_sign_modified_removed = '✦'
+let g:gitgutter_sign_added = '∎'
+let g:gitgutter_sign_modified = '∎'
+let g:gitgutter_sign_removed = '∎'
+let g:gitgutter_sign_modified_removed = '∎'
 
 " vim-operator-flashy
 map y <Plug>(operator-flashy)
