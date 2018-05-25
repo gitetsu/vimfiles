@@ -69,7 +69,7 @@ Plug 'othree/yajs.vim'
 Plug 'LeafCage/yankround.vim'
 
 " syntaxes
-Plugin 'cespare/vim-toml'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
