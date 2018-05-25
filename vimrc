@@ -28,9 +28,6 @@ Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'AndrewRadev/linediff.vim'
 Plug 'vim-scripts/matchit.zip'
-Plug 'Shougo/neocomplcache'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'chrisbra/NrrwRgn'
 Plug 'kannokanno/previm'
@@ -72,6 +69,26 @@ Plug 'gcmt/wildfire.vim'
 Plug 'othree/yajs.vim'
 Plug 'LeafCage/yankround.vim'
 
+" language client and completion
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
+Plug 'felixfbecker/php-language-server', {'do': 'composer install && composer run-script parse-stubs'}
+let g:LanguageClient_serverCommands = {
+  \ 'php': ['php', $HOME . '/.vim/plugged/php-language-server/bin/php-language-server.php']
+  \ }
+
+Plug 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
+
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc', {'do': 'pip3 install neovim'}
+Plug 'Shougo/context_filetype.vim'
+
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
 " syntaxes
 Plug 'cespare/vim-toml'
 
@@ -97,7 +114,7 @@ if &t_Co >= 256 || has("gui_running")
     highlight IncSearch ctermfg=199 ctermbg=233
     highlight DiffAdd term=bold ctermbg=34
     highlight DiffDelete term=bold ctermbg=208
-
+    highlight! link PmenuSel identifier
   endfunction
 
   augroup mycolor
