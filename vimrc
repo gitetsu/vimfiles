@@ -254,8 +254,8 @@ endif
 " plugins
 
 " caw.vim
-nmap <Space>c <Plug>(caw:i:toggle)
-vmap <Space>c <Plug>(caw:i:toggle)
+nmap <Space>c <Plug>(caw:hatpos:toggle)
+vmap <Space>c <Plug>(caw:hatpos:toggle)
 
 " ctrlp.vim
 let g:ctrlp_map = '<Space>p'
