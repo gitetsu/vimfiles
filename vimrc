@@ -45,6 +45,7 @@ Plug 'wellle/targets.vim'
 Plug 'rhysd/try-colorscheme.vim'
 Plug 'osyo-manga/vim-anzu'
 Plug 'szw/vim-ctrlspace'
+Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
@@ -352,6 +353,10 @@ if executable('ag')
   let g:ctrlspace_glob_command = 'ag -l --nocolor -g ""'
 endif
 highlight link CtrlSpaceSearch Search
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 " vim-easymotion
 let g:EasyMotion_enter_jump_first = 1
