@@ -99,7 +99,8 @@ if exists('&ambiwidth')
 endif
 
 " display settings
-set number
+set nonumber
+set signcolumn=yes
 set ruler
 set list
 set listchars=tab:▸\ ,extends:_,trail:-,eol:↩
@@ -175,7 +176,18 @@ let mapleader = ","
 nnoremap <leader>t :<C-u>tabnew<CR>
 nnoremap <silent><leader>p :<C-u>setlocal paste!<CR>
 nnoremap <leader>P "*P
-nnoremap <silent><leader>C :<C-u>setlocal number!<CR>:<C-u>setlocal list!<CR>
+
+command! ToggleSign call s:ToggleSign()
+function! s:ToggleSign() abort
+  setlocal list!
+  if &signcolumn == 'yes'
+    setlocal signcolumn=no
+  else
+    setlocal signcolumn=yes
+  endif
+endfunction
+
+nnoremap <silent><leader>C :<C-u>ToggleSign<CR>
 nnoremap <expr> s* ':%s/\<' . expand('<cword>') . '\>/'
 nnoremap Y y$
 nnoremap j gj
