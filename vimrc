@@ -224,12 +224,6 @@ cnoremap <C-k> <Up>
 cnoremap <C-l> <C-u>
 cnoremap w!! w !sudo tee % >/dev/null
 
-let php_sql_query=1
-let php_htmlInStrings=1
-"let php_noShortTags=1
-let php_folding=1
-let php_large_file=5000
-
 " omni completion
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set filetype=xhtml
