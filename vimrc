@@ -16,12 +16,37 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " plugins
+Plug 'vim-jp/vimdoc-ja'
+set helplang=ja,en
 Plug 'tpope/vim-abolish'
 Plug 'rking/ag.vim'
+Plug 'w0rp/ale'
+let g:ale_linters = {
+  \'php': ['php', 'phpstan', 'phpcs', 'langserver']
+\}
+let g:ale_php_phpcs_standard = 'PSR1,PSR12'
+let g:ale_php_langserver_executable =
+  \expand('~/.vim/plugged/php-language-server/bin/php-language-server.php')
+let g:ale_php_phpstan_executable = './vendor/bin/phpstan'
+" Setting for fixer
+let g:ale_fixers = {
+    \'php': ['php_cs_fixer']
+\}
+let g:ale_fix_on_save = 1
+
 Plug 'DataWraith/auto_mkdir'
+Plug 'benmills/vimux'
 Plug 'tyru/caw.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'arecarn/fold-cycle.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..' }, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..' }, 'right:50%:hidden', '?'),
+  \   <bang>0)
 Plug 'gregsexton/gitv'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -30,10 +55,10 @@ Plug 'AndrewRadev/linediff.vim'
 Plug 'vim-scripts/matchit.zip'
 Plug 'scrooloose/nerdtree'
 Plug 'chrisbra/NrrwRgn'
+"Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 Plug 'kannokanno/previm'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'scrooloose/syntastic'
 Plug 'AndrewRadev/switch.vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -42,6 +67,9 @@ Plug 'wellle/targets.vim'
 Plug 'rhysd/try-colorscheme.vim'
 Plug 'osyo-manga/vim-anzu'
 Plug 'szw/vim-ctrlspace'
+Plug 'janko/vim-test'
+let test#strategy = "vimux"
+let test#php#kahlan#executable = "make test"
 Plug 'junegunn/vim-easy-align'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-endwise'
@@ -50,6 +78,7 @@ Plug 'int3/vim-extradite'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_enabled = 0
 Plug 'thinca/vim-localrc'
 Plug 'kana/vim-operator-user'
 Plug 'haya14busa/vim-operator-flashy'
@@ -75,15 +104,35 @@ Plug 'autozimu/LanguageClient-neovim', {
   \ 'do': 'bash install.sh',
   \ }
 Plug 'felixfbecker/php-language-server', {'do': 'composer install && composer run-script parse-stubs'}
+let g:LanguageClient_autoStart = 0
 let g:LanguageClient_serverCommands = {
-  \ 'php': ['php', $HOME . '/.vim/plugged/php-language-server/bin/php-language-server.php']
-  \ }
+ \ 'php': ['php', $HOME . '/.vim/plugged/php-language-server/bin/php-language-server.php'],
+ \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+ \ }
 
 Plug 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#options = get(g:, 'deoplete#options', {})
+let g:deoplete#options.php = ['omni', 'phpcd']
+Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
+nmap <silent><Space>u :<C-u>call phpactor#UseAdd()<CR>
+nmap <silent><Space>mm :call phpactor#ContextMenu()<CR>
+nmap <Space>nn :call phpactor#Navigate()<CR>
+nmap <Space>oo :call phpactor#GotoDefinition()<CR>
+nmap <Space>oh :PhpactorGotoDefinition sp<CR>
+nmap <Space>ov :call phpactor#GotoDefinitionVsplit()<CR>
+nmap <Space>ot :call phpactor#GotoDefinitionTab()<CR>
+nmap <Space>K :call phpactor#Hover()<CR>
+nmap <Space>tt :call phpactor#Transform()<CR>
+nmap <Space>cc :call phpactor#ClassNew()<CR>
+nmap <silent><Space>ee :call phpactor#ExtractExpression(v:false)<CR>
+vmap <silent><Space>ee :<C-U>call phpactor#ExtractExpression(v:true)<CR>
+vmap <silent><Space>em :<C-U>call phpactor#ExtractMethod()<CR>
+Plug 'kristijanhusak/deoplete-phpactor'
 
 Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc', {'do': 'pip3 install neovim'}
+let g:python3_host_prog = '/usr/local/bin/python3'
+Plug 'roxma/vim-hug-neovim-rpc', {'do': 'pip3 install pynvim'}
 Plug 'Shougo/context_filetype.vim'
 
 Plug 'Shougo/neosnippet'
@@ -224,13 +273,6 @@ cnoremap <C-k> <Up>
 cnoremap <C-l> <C-u>
 cnoremap w!! w !sudo tee % >/dev/null
 
-" omni completion
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set filetype=xhtml
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-
 imap <silent><leader>date <ESC>:execute 'normal a'.strftime('%Y/%m/%d')<CR>a
 
 "completeion from syntax higilight
@@ -251,8 +293,9 @@ endif
 nmap <Space>c <Plug>(caw:hatpos:toggle)
 vmap <Space>c <Plug>(caw:hatpos:toggle)
 
+nmap <Space>p :Files<cr>
 " ctrlp.vim
-let g:ctrlp_map = '<Space>p'
+" let g:ctrlp_map = '<Space>p'
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_prompt_mappings = {
@@ -308,10 +351,11 @@ map zg/ <Plug>(incsearch-fuzzy-stay)
 
 " lightline
 let g:lightline = {
+  \ 'coloerscheme': 'one',
   \ 'active': {
   \   'left': [
   \     ['mode', 'paste'],
-  \     ['readonly', 'filename', 'modified', 'anzu']
+  \     ['readonly', 'filename', 'ale', 'modified', 'anzu']
   \   ],
   \   'right': [
   \     ['lineinfo'],
@@ -324,11 +368,25 @@ let g:lightline = {
   \   'lineinfo': '%3l/%3L:%-2v',
   \ },
   \ 'component_function': {
+  \   'ale': 'AleStatus',
   \   'anzu': 'anzu#search_status',
   \   'filename': 'MyFilename',
   \   'gutentags': 'gutentags#statusline',
   \ }
   \ }
+
+function! AleStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
 
 function! MyFilename()
   return ('' != expand('%:f') ? expand('%:f') : '[No Name]')
@@ -383,18 +441,18 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " vim-easymotion
-let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_use_migemo = 1
-let g:EasyMotion_use_smartsign_us = 1
 let g:EasyMotion_use_upper = 1
 nmap <Space>m <Plug>(easymotion-s2)
 map f <Plug>(easymotion-fl)
 map t <Plug>(easymotion-tl)
 map F <Plug>(easymotion-Fl)
 map T <Plug>(easymotion-Tl)
+map <Space>f <Plug>(easymotion-bd-f)
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 
@@ -428,8 +486,12 @@ call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
 call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
 call submode#map('changetab', 'n', '', 't', 'gt')
 call submode#map('changetab', 'n', '', 'T', 'gT')
-call submode#enter_with('closeWindow', 'n', '', '<C-w>c', '<C-w>c')
-call submode#map('closeWindow', 'n', '', 'c', '<C-w>c')
+call submode#enter_with('window', 'n', '', '<C-w><C-w>')
+call submode#map('window', 'n', '', 'c', '<C-w>c')
+call submode#map('window', 'n', '', 'h', '<C-w>h')
+call submode#map('window', 'n', '', 'j', '<C-w>j')
+call submode#map('window', 'n', '', 'k', '<C-w>k')
+call submode#map('window', 'n', '', 'l', '<C-w>l')
 
 " vim-textmanip
 xmap <C-j> <Plug>(textmanip-move-down)
@@ -450,3 +512,14 @@ nmap gP <Plug>(yankround-gP)
 nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 nmap <Space>h :CtrlPYankRound<CR>
+
+augroup filetype-php
+  autocmd!
+  " smartchr
+  autocmd FileType php inoremap <expr> = smartchr#one_of('=', ' = ', ' == ', ' => ', ' === ')
+  autocmd FileType php inoremap <expr> ! smartchr#one_of('!', ' != ', ' !== ')
+  autocmd FileType php inoremap <expr> + smartchr#one_of('+', ' + ', ' ++ ', ' += ')
+  autocmd FileType php inoremap <expr> - smartchr#one_of('-', ' - ', ' -- ', ' -= ')
+  autocmd FileType php inoremap <expr> . smartchr#one_of('.', ' . ', '...')
+  autocmd FileType php inoremap <expr> , smartchr#one_of(',', ', ')
+augroup END

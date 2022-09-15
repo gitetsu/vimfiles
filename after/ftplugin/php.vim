@@ -2,13 +2,6 @@ setlocal expandtab
 setlocal shiftwidth=4
 setlocal tabstop=4
 
-" smartchr
-inoremap <expr> = smartchr#one_of('=', ' = ', ' == ', ' => ', ' === ')
-inoremap <expr> ! smartchr#one_of('!', ' != ', ' !== ')
-inoremap <expr> + smartchr#one_of('+', ' + ', ' += ')
-inoremap <expr> - smartchr#one_of('-', ' - ', ' -= ')
-inoremap <expr> . smartchr#one_of('.', ' . ')
-inoremap <expr> , smartchr#one_of(',', ', ')
 
 " Ref
 let g:ref_phpmanual_path = $HOME . '/man/php-chunked-xhtml/'
